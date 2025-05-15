@@ -1,7 +1,10 @@
 streamlit
-pandas
-numpy
+altair
 folium
-openrouteservice
-geopy
+numpy
+pandas
+requests
 ortools
+streamlit-folium
+tenacity
+
