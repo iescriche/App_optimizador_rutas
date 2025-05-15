@@ -173,7 +173,8 @@ def build_routing_model(
 
         rout.GetDimensionOrDie("Distance").SetGlobalSpanCostCoefficient(1000)
 
-    return man, rout, pairing_time_dim
+    return man, rout, time_dim
+
 
 def solve_vrp_simple(
     dist_m,
@@ -939,7 +940,8 @@ def main():
                     dest = (df_today.at[rt[i + 1], "LATITUD"], df_today.at[rt[i + 1], "LONGITUD"])
                     pts = get_polyline_ors(orig, dest, api_key)
                     if pts:
-                        folium.PolyLine(pts, color=colors[color], weight=4).add_to(fmap)
+                        folium.PolyLine(pts, color=color, weight=4).add_to(fmap)
+
                 for seq, node in enumerate(rt):
                     eta_val = eta_global[node] if node < len(eta_global) and eta_global[node] is not None else None
                     eta_str = f"{eta_val // 60:02d}:{eta_val % 60:02d}" if eta_val is not None else "N/A"
